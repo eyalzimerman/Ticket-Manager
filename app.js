@@ -23,4 +23,20 @@ app.get("/api/tickets", async (req, res) => {
   }
 });
 
+app.patch("/api/tickets/:ticketId/done", (req, res) => {
+  const { ticketId } = req.params;
+
+  Tickets.findByIdAndUpdate(ticketId, { done: true }, { new: true })
+    .then(() => {
+      res.status(200).send({ updated: true });
+    })
+    .catch((e) => {
+      if (e.name === "CastError") {
+        res.status(404).send({ message: e.name, updated: false });
+      } else {
+        res.status(500).send({ message: "MongooseError", updated: false });
+      }
+    });
+});
+
 module.exports = app;
