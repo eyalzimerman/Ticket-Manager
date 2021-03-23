@@ -12,9 +12,11 @@ app.get("/api/tickets/", async (req, res) => {
     let data = await Tickets.find({});
     const { searchText } = req.query;
     if (searchText) {
-      data = data?.filter((search) => {
-        return search.title.toLowerCase().includes(searchText.toLowerCase());
-      });
+      data =
+        data &&
+        data.filter((search) => {
+          return search.title.toLowerCase().includes(searchText.toLowerCase());
+        });
     }
 
     res.status(200).json(data);

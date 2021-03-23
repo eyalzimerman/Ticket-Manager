@@ -27,9 +27,10 @@ export default function Ticket({
         By <span>{ticket.userEmail}</span> |{" "}
         <span>{new Date(ticket.creationTime).toDateString()}</span>{" "}
         <div className="labels">
-          {ticket.labels?.map((label, i) => (
-            <Label key={`Label-${i}`} label={label} />
-          ))}
+          {ticket.labels &&
+            ticket.labels.map((label, i) => (
+              <Label key={`Label-${i}`} label={label} />
+            ))}
         </div>
       </div>
       <hr />

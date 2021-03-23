@@ -9,16 +9,17 @@ export default function TicketList({
 }) {
   return (
     <div className="ticket-list">
-      {allTickets?.map((ticket, i) => (
-        <Ticket
-          key={`Ticket-${i}`}
-          setHiddenTicketCounter={setHiddenTicketCounter}
-          hiddenTicketCounter={hiddenTicketCounter}
-          ticket={ticket}
-          setAllTickets={setAllTickets}
-          allTickets={allTickets}
-        />
-      ))}
+      {allTickets &&
+        allTickets.map((ticket, i) => (
+          <Ticket
+            key={`Ticket-${i}`}
+            setHiddenTicketCounter={setHiddenTicketCounter}
+            hiddenTicketCounter={hiddenTicketCounter}
+            ticket={ticket}
+            setAllTickets={setAllTickets}
+            allTickets={allTickets}
+          />
+        ))}
     </div>
   );
 }
