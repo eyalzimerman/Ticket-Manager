@@ -28,7 +28,7 @@ app.get("/api/tickets", async (req, res) => {
 app.patch("/api/tickets/:ticketId/done", (req, res) => {
   const { ticketId } = req.params;
 
-  Tickets.findByIdAndUpdate(ticketId, { done: true }, { new: true })
+  return Tickets.findByIdAndUpdate(ticketId, { done: true }, { new: true })
     .then(() => {
       res.status(200).send({ updated: true });
     })
@@ -45,7 +45,7 @@ app.patch("/api/tickets/:ticketId/done", (req, res) => {
 app.patch("/api/tickets/:ticketId/undone", (req, res) => {
   const { ticketId } = req.params;
 
-  Tickets.findByIdAndUpdate(ticketId, { done: false }, { new: true })
+  return Tickets.findByIdAndUpdate(ticketId, { done: false }, { new: true })
     .then(() => {
       res.status(200).send({ updated: true });
     })
