@@ -36,7 +36,7 @@ export default function SearchArea() {
         setAllTickets(result.data);
       })
       .catch((e) => {
-        console.log(e.message);
+        console.log(e.name);
       });
   }, []);
 
