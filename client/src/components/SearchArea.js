@@ -57,6 +57,7 @@ export default function SearchArea() {
       });
   };
 
+  // Function for get ticket by clicking label text
   const getTicketByClickingLabelText = (e) => {
     const inputValue = e.target.innerText;
     let ticketsByLabel = [];
@@ -84,10 +85,17 @@ export default function SearchArea() {
     setAllTickets(allTickets.slice());
   };
 
+  const scrollUp = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  };
+
   return (
     <div className="search-area">
       <h1>Ticket Manager</h1>
-
+      <div className="scroll-btn" onClick={scrollUp}>
+        👆🏻
+      </div>
       <input
         id="searchInput"
         className="input"
@@ -103,7 +111,11 @@ export default function SearchArea() {
       )}
       <div className="labels-container">
         {labels.map((label, i) => (
-          <span onClick={getTicketByClickingLabelText} key={`label-${i}`}>
+          <span
+            className="label-search-area"
+            onClick={getTicketByClickingLabelText}
+            key={`label-${i}`}
+          >
             {label}
           </span>
         ))}

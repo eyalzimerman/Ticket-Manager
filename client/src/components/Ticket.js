@@ -24,8 +24,10 @@ export default function Ticket({
       <div className="title">{ticket.title}</div>
       <div className="content">{ticket.content}</div>
       <div className="ticket-footer">
-        By <span>{ticket.userEmail}</span> |{" "}
-        <span>{new Date(ticket.creationTime).toDateString()}</span>{" "}
+        <div className="ticket-footer-content">
+          By <span>{ticket.userEmail}</span> |{" "}
+          <span>{new Date(ticket.creationTime).toDateString()}</span>{" "}
+        </div>
         <div className="labels">
           {ticket.labels &&
             ticket.labels.map((label, i) => (
@@ -33,7 +35,6 @@ export default function Ticket({
             ))}
         </div>
       </div>
-      <hr />
     </div>
   );
 }

@@ -1,3 +1,67 @@
 .hide-ticket {
   display: none;
 }
+
+.ticket {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 70%;
+  background-color: rgb(236, 208, 208);
+  border-radius: 2em;
+  word-wrap: break-word;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  white-space: pre-wrap;
+  box-shadow: 7px 7px 7px wheat;
+}
+
+.title {
+  display: flex;
+  display: inline-flex;
+  justify-content: center;
+  width: fit-content;
+  margin: auto;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.content {
+  margin: 2vh 2vw;
+  height: 30%;
+  text-align: start;
+  margin-bottom: 7vh;
+}
+
+.hideTicketButton {
+  display: flex;
+  position: relative;
+  left: 90%;
+  margin-top: 5vh;
+  border: none;
+  width: fit-content;
+  font-size: 1em;
+  background-color: rgb(236, 208, 208);
+  color: rgb(236, 208, 208);
+}
+
+.ticket:hover > .hideTicketButton {
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+}
+
+.ticket-footer {
+  margin: 0;
+  width: 100%;
+  font-size: small;
+}
+
+.label-search-area {
+  background-color: rgb(109, 79, 79);
+  cursor: pointer;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin: 3px 3px;
+  width: fit-content;
+}
