@@ -24,6 +24,8 @@ export default function SearchArea() {
   const [hiddenTicketCounter, setHiddenTicketCounter] = useState();
   const [originalTickets, setOriginalTickets] = useState([]);
   const [filterLabels, setFilterLabels] = useState([]);
+  const [allHiddenTickets, setAllHiddenTickets] = useState([]);
+  const [tempText, setTempText] = useState("");
 
   useEffect(() => {
     axios
@@ -41,20 +43,27 @@ export default function SearchArea() {
   }, []);
 
   // Function to get tickets by search
-  const getTicketBySearchText = (e) => {
+  const getTicketBySearchText = async (e) => {
     const inputValue = e.target.value;
-    axios
-      .get(`/api/tickets?searchText=${inputValue}`)
-      .then((result) => {
-        if (result.data.length > 0) {
-          setAllTickets(result.data);
-        } else {
-          setAllTickets([]);
+    setTempText(inputValue);
+    try {
+      const result = await axios.get(`/api/tickets?searchText=${inputValue}`);
+      let tempTicket = [];
+      result.data.forEach((newTicket) => {
+        let bool = true;
+        allHiddenTickets.forEach((hideTicket) => {
+          if (hideTicket.content === newTicket.content) {
+            bool = false;
+          }
+        });
+        if (bool) {
+          tempTicket.push(newTicket);
         }
-      })
-      .catch((e) => {
-        console.log(e.message);
       });
+      setAllTickets(tempTicket);
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 
   // Function for get ticket by clicking label text
@@ -78,11 +87,13 @@ export default function SearchArea() {
 
   // Function to restore all hidden tickets
   const restoreAllTickets = () => {
-    allTickets.forEach((ticket) => {
+    const ticketsToDisplay = originalTickets.filter((ticket) => {
       ticket.hidden = false;
+      return ticket.title.toLowerCase().includes(tempText.toLowerCase());
     });
     setHiddenTicketCounter();
-    setAllTickets(allTickets.slice());
+    setAllTickets(ticketsToDisplay);
+    setAllHiddenTickets([]);
   };
 
   const scrollUp = () => {
@@ -124,8 +135,9 @@ export default function SearchArea() {
         allTickets={allTickets}
         setHiddenTicketCounter={setHiddenTicketCounter}
         hiddenTicketCounter={hiddenTicketCounter}
-        setAllTickets={setAllTickets}
         allTickets={allTickets}
+        allHiddenTickets={allHiddenTickets}
+        setAllHiddenTickets={setAllHiddenTickets}
       />
     </div>
   );

@@ -6,7 +6,8 @@ export default function TicketList({
   allTickets,
   setHiddenTicketCounter,
   hiddenTicketCounter,
-  setAllTickets,
+  setAllHiddenTickets,
+  allHiddenTickets,
 }) {
   return (
     <div className="ticket-list">
@@ -17,8 +18,8 @@ export default function TicketList({
             setHiddenTicketCounter={setHiddenTicketCounter}
             hiddenTicketCounter={hiddenTicketCounter}
             ticket={ticket}
-            setAllTickets={setAllTickets}
-            allTickets={allTickets}
+            setAllHiddenTickets={setAllHiddenTickets}
+            allHiddenTickets={allHiddenTickets}
           />
         ))}
     </div>

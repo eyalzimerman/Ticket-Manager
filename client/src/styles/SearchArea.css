@@ -18,6 +18,12 @@ body {
   width: 60%;
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
 .search-area {
   display: flex;
   flex-direction: column;

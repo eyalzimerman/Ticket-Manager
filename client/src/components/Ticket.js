@@ -6,14 +6,16 @@ export default function Ticket({
   ticket,
   setHiddenTicketCounter,
   hiddenTicketCounter,
-  setAllTickets,
-  allTickets,
+  allHiddenTickets,
+  setAllHiddenTickets,
 }) {
   // Function to hide specific ticket
   const hide = () => {
     ticket.hidden = true;
-    setAllTickets(allTickets.slice());
     setHiddenTicketCounter(hiddenTicketCounter ? hiddenTicketCounter + 1 : 1);
+    const temp = allHiddenTickets;
+    temp.push(ticket);
+    setAllHiddenTickets(temp);
   };
 
   return (
