@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import TicketList from "./TicketList";
+import "../styles/SearchArea.css";
 
 export default function SearchArea() {
   const labels = [
@@ -21,6 +22,8 @@ export default function SearchArea() {
   // All States
   const [allTickets, setAllTickets] = useState([]);
   const [hiddenTicketCounter, setHiddenTicketCounter] = useState();
+  const [originalTickets, setOriginalTickets] = useState([]);
+  const [filterLabels, setFilterLabels] = useState([]);
 
   useEffect(() => {
     axios
@@ -29,10 +32,11 @@ export default function SearchArea() {
         result.data.forEach((ticket) => {
           ticket.hidden = false;
         });
+        setOriginalTickets(result.data);
         setAllTickets(result.data);
       })
       .catch((e) => {
-        console.log(e.name);
+        console.log(e.message);
       });
   }, []);
 
@@ -49,8 +53,26 @@ export default function SearchArea() {
         }
       })
       .catch((e) => {
-        console.log(e.name);
+        console.log(e.message);
       });
+  };
+
+  const getTicketByClickingLabelText = (e) => {
+    const inputValue = e.target.innerText;
+    let ticketsByLabel = [];
+    if (filterLabels.includes(inputValue)) {
+      setFilterLabels([]);
+      setAllTickets(originalTickets);
+    } else {
+      filterLabels.push(inputValue);
+      originalTickets.forEach((ticket) => {
+        if (ticket.labels.includes(inputValue)) {
+          ticketsByLabel.push(ticket);
+        }
+        setAllTickets(ticketsByLabel);
+      });
+      setFilterLabels(filterLabels.slice());
+    }
   };
 
   // Function to restore all hidden tickets
@@ -81,7 +103,9 @@ export default function SearchArea() {
       )}
       <div className="labels-container">
         {labels.map((label, i) => (
-          <span key={`label-${i}`}> {label} </span>
+          <span onClick={getTicketByClickingLabelText} key={`label-${i}`}>
+            {label}
+          </span>
         ))}
       </div>
       <TicketList
