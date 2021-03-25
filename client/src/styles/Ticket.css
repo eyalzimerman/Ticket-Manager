@@ -98,4 +98,16 @@
 
 .condition {
   font-size: large;
+  position: absolute;
+  margin-left: 30%;
 }
+
+.done-undone-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* .done-undone-btn {
+  align-self: center;
+} */

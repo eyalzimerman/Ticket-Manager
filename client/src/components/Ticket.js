@@ -10,8 +10,6 @@ export default function Ticket({
   hiddenTicketCounter,
   allHiddenTickets,
   setAllHiddenTickets,
-  setBlurWhenLoading,
-  setClassNameSpinner,
   ticketCondition,
 }) {
   // Function to hide specific ticket
@@ -38,24 +36,17 @@ export default function Ticket({
 
   // Function for done or Undone ticket
   const doneUndone = async () => {
-    setClassNameSpinner("loader");
-    setBlurWhenLoading("blur");
-
     if (isDone.props.className === "fas fa-check") {
       try {
         await axios.patch(`/api/tickets/${ticket._id}/done`);
         setCondition("saved!");
         setConditionClass("condition");
         setIsDone(<i className="fas fa-times"></i>);
-        setClassNameSpinner("spinner-div");
-        setBlurWhenLoading("main");
       } catch (e) {
         console.log(e.message);
         setCondition("Failed!");
         setConditionClass("condition");
         setIsDone(<i className="fas fa-check"></i>);
-        setClassNameSpinner("spinner-div");
-        setBlurWhenLoading("main");
       }
       setTimeout(() => {
         setCondition("");
@@ -63,21 +54,15 @@ export default function Ticket({
       }, 4000);
     } else {
       try {
-        setClassNameSpinner("loader");
-        setBlurWhenLoading("blur");
         await axios.patch(`/api/tickets/${ticket._id}/undone`);
         setCondition("saved!");
         setConditionClass("condition");
         setIsDone(<i className="fas fa-check"></i>);
-        setClassNameSpinner("spinner-div");
-        setBlurWhenLoading("main");
       } catch (e) {
         console.log(e.message);
         setCondition("Failed!");
         setConditionClass("condition");
         setIsDone(<i className="fas fa-times"></i>);
-        setClassNameSpinner("spinner-div");
-        setBlurWhenLoading("main");
       }
       setTimeout(() => {
         setCondition("");
@@ -98,10 +83,13 @@ export default function Ticket({
           By <span>{ticket.userEmail}</span> |{" "}
           <span>{new Date(ticket.creationTime).toDateString()}</span>{" "}
         </div>
-        <span className="done-undone-btn" onClick={doneUndone}>
-          {isDone}
-        </span>
-        <span className={conditionClass}>{condition}</span>
+        <div className="done-undone-div">
+          <span className={conditionClass}>{condition}</span>
+          <span className="done-undone-btn" onClick={doneUndone}>
+            {isDone}
+          </span>
+        </div>
+
         <div className="labels">
           {ticket.labels &&
             ticket.labels.map((label, i) => (

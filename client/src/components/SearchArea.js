@@ -187,8 +187,6 @@ export default function SearchArea() {
           allTickets={allTickets}
           allHiddenTickets={allHiddenTickets}
           setAllHiddenTickets={setAllHiddenTickets}
-          setClassNameSpinner={setClassNameSpinner}
-          setBlurWhenLoading={setBlurWhenLoading}
         />
       </div>
     </div>
