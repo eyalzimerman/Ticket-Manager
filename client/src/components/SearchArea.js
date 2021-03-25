@@ -128,12 +128,16 @@ export default function SearchArea() {
       <div className="restore-div">
         <div id="hideTicketsCounter">{hiddenTicketCounter} </div>
         {hiddenTicketCounter && (
-          <span id="restoreHideTickets">
+          <span>
             {" "}
             {hiddenTicketCounter > 1
               ? "Hidden Tickets"
               : "Hidden Ticket"} -{" "}
-            <span className="restore-btn" onClick={restoreAllTickets}>
+            <span
+              className="restore-btn"
+              id="restoreHideTickets"
+              onClick={restoreAllTickets}
+            >
               Restore
             </span>
           </span>

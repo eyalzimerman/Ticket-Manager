@@ -5,6 +5,7 @@ h1 {
 body {
   background-color: rgb(156, 148, 148);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 #searchInput {
