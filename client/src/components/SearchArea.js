@@ -26,6 +26,7 @@ export default function SearchArea() {
   const [filterLabels, setFilterLabels] = useState([]);
   const [allHiddenTickets, setAllHiddenTickets] = useState([]);
   const [tempText, setTempText] = useState("");
+  const [nowClicked, setNowClicked] = useState([]);
 
   useEffect(() => {
     axios
@@ -66,9 +67,19 @@ export default function SearchArea() {
     }
   };
 
+  useEffect(() => {
+    for (let i = 0; i < nowClicked.length - 1; i++) {
+      nowClicked[i].classList.toggle("clicked");
+    }
+    nowClicked.splice(0, nowClicked.length - 1);
+  }, [nowClicked]);
+
   // Function for get ticket by clicking label text
   const getTicketByClickingLabelText = (e) => {
     const inputValue = e.target.innerText;
+    nowClicked.push(e.target);
+    setNowClicked(nowClicked.slice());
+    e.target.classList.toggle("clicked");
     let ticketsByLabel = [];
     if (filterLabels.includes(inputValue)) {
       setFilterLabels([]);
@@ -114,12 +125,21 @@ export default function SearchArea() {
         placeholder="Search for ticket..."
         onChange={getTicketBySearchText}
       />
-      <div id="hideTicketsCounter">{hiddenTicketCounter} </div>
-      {hiddenTicketCounter && (
-        <span id="restoreHideTickets" onClick={restoreAllTickets}>
-          Restore
-        </span>
-      )}
+      <div className="restore-div">
+        <div id="hideTicketsCounter">{hiddenTicketCounter} </div>
+        {hiddenTicketCounter && (
+          <span id="restoreHideTickets">
+            {" "}
+            {hiddenTicketCounter > 1
+              ? "Hidden Tickets"
+              : "Hidden Ticket"} -{" "}
+            <span className="restore-btn" onClick={restoreAllTickets}>
+              Restore
+            </span>
+          </span>
+        )}
+      </div>
+
       <div className="labels-container">
         {labels.map((label, i) => (
           <span

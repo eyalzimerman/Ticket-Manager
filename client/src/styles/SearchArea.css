@@ -18,6 +18,21 @@ body {
   width: 60%;
 }
 
+.restore-div {
+  margin-top: 2vh;
+  font-size: small;
+}
+
+.restore-btn {
+  cursor: pointer;
+  font-size: small;
+  color: rgb(55, 46, 138);
+}
+
+.restore-div > #hideTicketsCounter {
+  display: inline-block;
+}
+
 input:focus,
 textarea:focus,
 select:focus {
@@ -62,4 +77,8 @@ select:focus {
 
 .scroll-btn:hover {
   opacity: 1;
+}
+
+.clicked {
+  background-color: rgb(134, 134, 143);
 }

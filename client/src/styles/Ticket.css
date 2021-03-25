@@ -13,7 +13,12 @@
   margin-top: 2em;
   margin-bottom: 2em;
   white-space: pre-wrap;
-  box-shadow: 7px 7px 7px wheat;
+  box-shadow: 4px 4px 4px wheat;
+  transition: box-shadow 1s;
+}
+
+.ticket:hover {
+  box-shadow: 8px 8px 8px wheat;
 }
 
 .title {
@@ -43,12 +48,17 @@
   font-size: 1em;
   background-color: rgb(236, 208, 208);
   color: rgb(236, 208, 208);
+  transition: transform 1s;
 }
 
 .ticket:hover > .hideTicketButton {
   cursor: pointer;
   color: black;
   font-weight: bold;
+  -ms-transform: scale(1.4);
+  -webkit-transform: scale(1.4);
+  transform: scale(1.4);
+  text-shadow: 6px 6px 6px black;
 }
 
 .ticket-footer {
