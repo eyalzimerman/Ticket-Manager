@@ -5,6 +5,11 @@ const Tickets = require("./model/tickets");
 
 app.use(express.static("client/build"));
 app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
 // GET all tickets or by searching title text
 app.get("/api/tickets/", async (req, res) => {
@@ -58,6 +63,25 @@ app.patch("/api/tickets/:ticketId/undone", (req, res) => {
         res.status(500).json({ message: "MongooseError", updated: false });
       }
     });
+});
+
+app.post("/api/tickets/new/", async (req, res) => {
+  const { title, content, userEmail, creationTime, labels } = req.body;
+  console.log(req.body);
+  try {
+    const ticket = new Tickets({
+      title,
+      content,
+      userEmail,
+      done: false,
+      creationTime,
+      labels,
+    });
+    const newTicket = await ticket.save();
+    return res.status(200).json(newTicket);
+  } catch (e) {
+    return res.status(500).json({ message: e.message });
+  }
 });
 
 module.exports = app;

@@ -1,11 +1,13 @@
 h1 {
   margin: 0;
   padding: 2%;
+  font-size: 4em;
 }
 body {
-  background-color: rgb(156, 148, 148);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(240, 234, 217);
+  font-family: "New Tegomin", serif;
   overflow-x: hidden;
+  font-weight: bold;
 }
 
 #searchInput {
@@ -52,16 +54,17 @@ select:focus {
 }
 
 .label-search-area {
-  background-color: rgb(109, 79, 79);
+  background-color: rgb(162, 212, 212);
   cursor: pointer;
   padding: 5px 15px;
   border-radius: 5px;
   margin: 3px 3px;
   width: fit-content;
+  box-shadow: 2px 2px 2px wheat;
 }
 
 .label-search-area:hover {
-  background-color: rgb(134, 134, 143);
+  background-color: rgb(214, 243, 242);
 }
 
 .scroll-btn {
@@ -81,7 +84,7 @@ select:focus {
 }
 
 .clicked {
-  background-color: rgb(134, 134, 143);
+  background-color: rgb(214, 243, 242);
   cursor: pointer;
   padding: 5px 15px;
   border-radius: 5px;

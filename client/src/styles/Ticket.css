@@ -7,7 +7,7 @@
   flex-direction: column;
   margin: auto;
   width: 70%;
-  background-color: rgb(236, 208, 208);
+  background-color: rgb(198, 231, 231);
   border-radius: 2em;
   word-wrap: break-word;
   margin-top: 2em;
@@ -27,8 +27,8 @@
   justify-content: center;
   width: fit-content;
   margin: auto;
-  font-size: x-large;
-  font-weight: bold;
+  font-size: xx-large;
+  font-weight: 900;
 }
 
 .content {
@@ -41,13 +41,14 @@
 .hideTicketButton {
   display: flex;
   position: relative;
+  font-family: "New Tegomin", serif;
   left: 90%;
   margin-top: 5vh;
   border: none;
   width: fit-content;
   font-size: 1em;
-  background-color: rgb(236, 208, 208);
-  color: rgb(236, 208, 208);
+  background-color: rgb(198, 231, 231);
+  color: rgb(198, 231, 231);
   transition: transform 1s;
 }
 
@@ -68,12 +69,16 @@
 }
 
 .label-search-area {
-  background-color: rgb(109, 79, 79);
+  background-color: rgb(162, 212, 212);
   cursor: pointer;
   padding: 5px 15px;
   border-radius: 5px;
   margin: 3px 3px;
   width: fit-content;
+}
+
+.label {
+  background-color: rgb(162, 212, 212);
 }
 
 .fa-check {

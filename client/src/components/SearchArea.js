@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import TicketList from "./TicketList";
+import Form from "./Form";
 import "../styles/SearchArea.css";
 
 export default function SearchArea() {
@@ -185,6 +186,7 @@ export default function SearchArea() {
             No Results Found... <i className="fas fa-search"></i>
           </div>
         )}
+        <Form />
         <TicketList
           allTickets={allTickets}
           setHiddenTicketCounter={setHiddenTicketCounter}
