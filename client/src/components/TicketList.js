@@ -24,6 +24,7 @@ export default function TicketList({
             allHiddenTickets={allHiddenTickets}
             setClassNameSpinner={setClassNameSpinner}
             setBlurWhenLoading={setBlurWhenLoading}
+            ticketCondition={ticket.done}
           />
         ))}
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Label from "./Label";
 import "../styles/Ticket.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Ticket({
@@ -12,6 +12,7 @@ export default function Ticket({
   setAllHiddenTickets,
   setBlurWhenLoading,
   setClassNameSpinner,
+  ticketCondition,
 }) {
   // Function to hide specific ticket
   const hide = () => {
@@ -27,10 +28,19 @@ export default function Ticket({
   const [condition, setCondition] = useState("");
   const [conditionClass, setConditionClass] = useState("");
 
+  useEffect(() => {
+    if (ticketCondition) {
+      setIsDone(<i className="fas fa-times"></i>);
+    } else {
+      setIsDone(<i className="fas fa-check"></i>);
+    }
+  }, []);
+
   // Function for done or Undone ticket
   const doneUndone = async () => {
     setClassNameSpinner("loader");
     setBlurWhenLoading("blur");
+
     if (isDone.props.className === "fas fa-check") {
       try {
         await axios.patch(`/api/tickets/${ticket._id}/done`);
