@@ -27,8 +27,12 @@ export default function SearchArea() {
   const [allHiddenTickets, setAllHiddenTickets] = useState([]);
   const [tempText, setTempText] = useState("");
   const [nowClicked, setNowClicked] = useState([]);
+  const [classNameSpinner, setClassNameSpinner] = useState("spinner-div");
+  const [blurWhenLoading, setBlurWhenLoading] = useState("main");
 
   useEffect(() => {
+    setClassNameSpinner("loader");
+    setBlurWhenLoading("blur");
     axios
       .get("/api/tickets")
       .then((result) => {
@@ -37,8 +41,12 @@ export default function SearchArea() {
         });
         setOriginalTickets(result.data);
         setAllTickets(result.data);
+        setClassNameSpinner("spinner-div");
+        setBlurWhenLoading("main");
       })
       .catch((e) => {
+        setClassNameSpinner("spinner-div");
+        setBlurWhenLoading("main");
         console.log(e.message);
       });
   }, []);
@@ -48,6 +56,8 @@ export default function SearchArea() {
     const inputValue = e.target.value;
     setTempText(inputValue);
     try {
+      setClassNameSpinner("loader");
+      setBlurWhenLoading("blur");
       const result = await axios.get(`/api/tickets?searchText=${inputValue}`);
       let tempTicket = [];
       result.data.forEach((newTicket) => {
@@ -61,8 +71,12 @@ export default function SearchArea() {
           tempTicket.push(newTicket);
         }
       });
+      setClassNameSpinner("spinner-div");
+      setBlurWhenLoading("main");
       setAllTickets(tempTicket);
     } catch (e) {
+      setClassNameSpinner("spinner-div");
+      setBlurWhenLoading("main");
       console.log(e.message);
     }
   };
@@ -116,7 +130,7 @@ export default function SearchArea() {
     <div className="search-area">
       <h1>Ticket Manager</h1>
       <div className="scroll-btn" onClick={scrollUp}>
-        👆🏻
+        <i class="fas fa-chevron-up"></i>
       </div>
       <input
         id="searchInput"
@@ -143,7 +157,16 @@ export default function SearchArea() {
           </span>
         )}
       </div>
-
+      <div className={classNameSpinner}>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
       <div className="labels-container">
         {labels.map((label, i) => (
           <span
@@ -155,14 +178,16 @@ export default function SearchArea() {
           </span>
         ))}
       </div>
-      <TicketList
-        allTickets={allTickets}
-        setHiddenTicketCounter={setHiddenTicketCounter}
-        hiddenTicketCounter={hiddenTicketCounter}
-        allTickets={allTickets}
-        allHiddenTickets={allHiddenTickets}
-        setAllHiddenTickets={setAllHiddenTickets}
-      />
+      <div className={blurWhenLoading}>
+        <TicketList
+          allTickets={allTickets}
+          setHiddenTicketCounter={setHiddenTicketCounter}
+          hiddenTicketCounter={hiddenTicketCounter}
+          allTickets={allTickets}
+          allHiddenTickets={allHiddenTickets}
+          setAllHiddenTickets={setAllHiddenTickets}
+        />
+      </div>
     </div>
   );
 }
