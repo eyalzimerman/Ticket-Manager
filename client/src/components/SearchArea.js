@@ -180,6 +180,11 @@ export default function SearchArea() {
         ))}
       </div>
       <div className={blurWhenLoading}>
+        {allTickets.length === 0 && (
+          <div className="not-found-message">
+            No Results Found... <i className="fas fa-search"></i>
+          </div>
+        )}
         <TicketList
           allTickets={allTickets}
           setHiddenTicketCounter={setHiddenTicketCounter}

@@ -93,6 +93,17 @@ select:focus {
   font-size: large;
 }
 
+.not-found-message {
+  margin: auto;
+  font-size: 3em;
+}
+
+.fa-search {
+  display: block;
+  font-size: 5em;
+  margin-top: 4vh;
+}
+
 /*-------styled spinner-------*/
 .spinner-div {
   display: none;
