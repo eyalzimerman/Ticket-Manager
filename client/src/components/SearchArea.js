@@ -24,12 +24,12 @@ export default function SearchArea() {
   const [allTickets, setAllTickets] = useState([]);
   const [hiddenTicketCounter, setHiddenTicketCounter] = useState();
   const [originalTickets, setOriginalTickets] = useState([]);
-  const [filterLabels, setFilterLabels] = useState([]);
+  const [filterLabels, setFilterLabels] = useState();
   const [allHiddenTickets, setAllHiddenTickets] = useState([]);
   const [tempText, setTempText] = useState("");
-  const [nowClicked, setNowClicked] = useState([]);
   const [classNameSpinner, setClassNameSpinner] = useState("spinner-div");
   const [blurWhenLoading, setBlurWhenLoading] = useState("main");
+  const [hideForm, setHideForm] = useState(true);
 
   useEffect(() => {
     setClassNameSpinner("loader");
@@ -82,32 +82,21 @@ export default function SearchArea() {
     }
   };
 
-  useEffect(() => {
-    for (let i = 0; i < nowClicked.length - 1; i++) {
-      nowClicked[i].classList.toggle("clicked");
-    }
-    nowClicked.splice(0, nowClicked.length - 1);
-  }, [nowClicked]);
-
   // Function for get ticket by clicking label text
   const getTicketByClickingLabelText = (e) => {
     const inputValue = e.target.innerText;
-    nowClicked.push(e.target);
-    setNowClicked(nowClicked.slice());
-    e.target.classList.toggle("clicked");
     let ticketsByLabel = [];
-    if (filterLabels.includes(inputValue)) {
-      setFilterLabels([]);
+    if (inputValue === filterLabels) {
       setAllTickets(originalTickets);
+      setFilterLabels();
     } else {
-      filterLabels.push(inputValue);
+      setFilterLabels(inputValue);
       originalTickets.forEach((ticket) => {
         if (ticket.labels.includes(inputValue)) {
           ticketsByLabel.push(ticket);
         }
         setAllTickets(ticketsByLabel);
       });
-      setFilterLabels(filterLabels.slice());
     }
   };
 
@@ -128,11 +117,34 @@ export default function SearchArea() {
     document.documentElement.scrollTop = 0;
   };
 
+  // Function to add new ticket to ticket List
+  const addNewTicket = (e) => {
+    const form = e.target;
+    e.preventDefault();
+    const formData = new FormData(form);
+    const data = {};
+    for (let [key, value] of formData.entries()) {
+      if (key === "labels") {
+        data[key] = data[key] ? data[key].concat(value) : [value];
+      } else {
+        data[key] = value;
+      }
+    }
+    axios.post("/api/tickets/new", data).catch((e) => {
+      console.log(e.message);
+    });
+    setHideForm(!hideForm);
+    form.reset();
+  };
+
   return (
     <div className="search-area">
       <h1>Ticket Manager</h1>
       <div className="scroll-btn" onClick={scrollUp}>
         <i className="fas fa-chevron-up"></i>
+      </div>
+      <div className="add-ticket" onClick={() => setHideForm(!hideForm)}>
+        <i class="fas fa-plus"></i>
       </div>
       <input
         id="searchInput"
@@ -172,7 +184,9 @@ export default function SearchArea() {
       <div className="labels-container">
         {labels.map((label, i) => (
           <span
-            className="label-search-area"
+            className={`label-search-area ${
+              filterLabels !== label ? "" : "clicked"
+            }`}
             onClick={getTicketByClickingLabelText}
             key={`label-${i}`}
           >
@@ -186,7 +200,11 @@ export default function SearchArea() {
             No Results Found... <i className="fas fa-search"></i>
           </div>
         )}
-        <Form />
+        <Form
+          hideForm={hideForm}
+          addNewTicket={addNewTicket}
+          setHideForm={setHideForm}
+        />
         <TicketList
           allTickets={allTickets}
           setHiddenTicketCounter={setHiddenTicketCounter}

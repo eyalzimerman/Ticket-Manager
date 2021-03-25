@@ -65,20 +65,20 @@ app.patch("/api/tickets/:ticketId/undone", (req, res) => {
     });
 });
 
+// POST request to add new ticket
 app.post("/api/tickets/new/", async (req, res) => {
-  const { title, content, userEmail, creationTime, labels } = req.body;
-  console.log(req.body);
+  const { title, content, userEmail, labels } = req.body;
   try {
     const ticket = new Tickets({
       title,
       content,
       userEmail,
       done: false,
-      creationTime,
+      creationTime: new Date(),
       labels,
     });
-    const newTicket = await ticket.save();
-    return res.status(200).json(newTicket);
+    await ticket.save();
+    return res.status(200).json({ message: "Ticket Saved!" });
   } catch (e) {
     return res.status(500).json({ message: e.message });
   }

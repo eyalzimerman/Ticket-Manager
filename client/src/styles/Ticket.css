@@ -42,7 +42,7 @@
   display: flex;
   position: relative;
   font-family: "New Tegomin", serif;
-  left: 90%;
+  left: 40%;
   margin-top: 5vh;
   border: none;
   width: fit-content;
@@ -112,7 +112,3 @@
   flex-direction: column;
   width: 100%;
 }
-
-/* .done-undone-btn {
-  align-self: center;
-} */

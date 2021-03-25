@@ -75,6 +75,8 @@ select:focus {
   border: none;
   background-color: wheat;
   padding: 1em;
+  height: 3vh;
+  width: 3vh;
   border-radius: 50%;
   opacity: 0.5;
 }
@@ -97,14 +99,35 @@ select:focus {
 }
 
 .not-found-message {
+  display: block;
   margin: auto;
   font-size: 3em;
+  position: fixed;
+  left: 35%;
 }
 
 .fa-search {
   display: block;
   font-size: 5em;
   margin-top: 4vh;
+}
+
+.add-ticket {
+  position: fixed;
+  cursor: pointer;
+  bottom: 2%;
+  right: 7%;
+  border: none;
+  background-color: wheat;
+  padding: 1em;
+  height: 3vh;
+  width: 3vh;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.add-ticket:hover {
+  opacity: 1;
 }
 
 /*-------styled spinner-------*/
