@@ -82,6 +82,11 @@ select:focus {
 
 .clicked {
   background-color: rgb(134, 134, 143);
+  cursor: pointer;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin: 3px 3px;
+  width: fit-content;
 }
 
 .fa-chevron-up {
@@ -100,7 +105,7 @@ select:focus {
 }
 
 .loader {
-  position: absolute;
+  position: fixed;
   align-content: center;
   display: flex;
   z-index: 1;

@@ -75,3 +75,27 @@
   margin: 3px 3px;
   width: fit-content;
 }
+
+.fa-check {
+  font-size: x-large;
+  color: rgb(19, 185, 19);
+  cursor: pointer;
+}
+
+.fa-times {
+  font-size: x-large;
+  color: red;
+  cursor: pointer;
+}
+
+.condition {
+  -webkit-transition: opacity 5s ease-in-out;
+  -moz-transition: opacity 35s ease-in-out;
+  -ms-transition: opacity 5s ease-in-out;
+  -o-transition: opacity 5s ease-in-out;
+  opacity: 0;
+}
+
+.condition {
+  font-size: large;
+}

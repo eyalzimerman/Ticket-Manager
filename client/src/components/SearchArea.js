@@ -121,6 +121,7 @@ export default function SearchArea() {
     setAllHiddenTickets([]);
   };
 
+  // Function to scroll up window
   const scrollUp = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
@@ -130,7 +131,7 @@ export default function SearchArea() {
     <div className="search-area">
       <h1>Ticket Manager</h1>
       <div className="scroll-btn" onClick={scrollUp}>
-        <i class="fas fa-chevron-up"></i>
+        <i className="fas fa-chevron-up"></i>
       </div>
       <input
         id="searchInput"
@@ -186,6 +187,8 @@ export default function SearchArea() {
           allTickets={allTickets}
           allHiddenTickets={allHiddenTickets}
           setAllHiddenTickets={setAllHiddenTickets}
+          setClassNameSpinner={setClassNameSpinner}
+          setBlurWhenLoading={setBlurWhenLoading}
         />
       </div>
     </div>

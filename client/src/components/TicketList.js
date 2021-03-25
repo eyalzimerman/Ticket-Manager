@@ -8,6 +8,8 @@ export default function TicketList({
   hiddenTicketCounter,
   setAllHiddenTickets,
   allHiddenTickets,
+  setBlurWhenLoading,
+  setClassNameSpinner,
 }) {
   return (
     <div className="ticket-list">
@@ -20,6 +22,8 @@ export default function TicketList({
             ticket={ticket}
             setAllHiddenTickets={setAllHiddenTickets}
             allHiddenTickets={allHiddenTickets}
+            setClassNameSpinner={setClassNameSpinner}
+            setBlurWhenLoading={setBlurWhenLoading}
           />
         ))}
     </div>
