@@ -1,0 +1,114 @@
+.hide-ticket {
+  display: none;
+}
+
+.ticket {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 70%;
+  background-color: rgb(198, 231, 231);
+  border-radius: 2em;
+  word-wrap: break-word;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  white-space: pre-wrap;
+  box-shadow: 4px 4px 4px wheat;
+  transition: box-shadow 1s;
+}
+
+.ticket:hover {
+  box-shadow: 8px 8px 8px wheat;
+}
+
+.title {
+  display: flex;
+  display: inline-flex;
+  justify-content: center;
+  width: fit-content;
+  margin: auto;
+  font-size: xx-large;
+  font-weight: 900;
+}
+
+.content {
+  margin: 2vh 2vw;
+  height: 30%;
+  text-align: start;
+  margin-bottom: 7vh;
+}
+
+.hideTicketButton {
+  display: flex;
+  position: relative;
+  font-family: "New Tegomin", serif;
+  left: 40%;
+  margin-top: 5vh;
+  border: none;
+  width: fit-content;
+  font-size: 1em;
+  background-color: rgb(198, 231, 231);
+  color: rgb(198, 231, 231);
+  transition: transform 1s;
+}
+
+.ticket:hover > .hideTicketButton {
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+  -ms-transform: scale(1.4);
+  -webkit-transform: scale(1.4);
+  transform: scale(1.4);
+  text-shadow: 6px 6px 6px black;
+}
+
+.ticket-footer {
+  margin: 0;
+  width: 100%;
+  font-size: small;
+}
+
+.label-search-area {
+  background-color: rgb(162, 212, 212);
+  cursor: pointer;
+  padding: 5px 15px;
+  border-radius: 5px;
+  margin: 3px 3px;
+  width: fit-content;
+}
+
+.label {
+  background-color: rgb(162, 212, 212);
+}
+
+.fa-check {
+  font-size: x-large;
+  color: rgb(19, 185, 19);
+  cursor: pointer;
+}
+
+.fa-times {
+  font-size: x-large;
+  color: red;
+  cursor: pointer;
+}
+
+.condition {
+  -webkit-transition: opacity 5s ease-in-out;
+  -moz-transition: opacity 35s ease-in-out;
+  -ms-transition: opacity 5s ease-in-out;
+  -o-transition: opacity 5s ease-in-out;
+  opacity: 0;
+}
+
+.condition {
+  font-size: large;
+  position: absolute;
+  margin-left: 28%;
+}
+
+.done-undone-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

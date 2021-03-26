@@ -1,0 +1,70 @@
+input[type="checkbox"] {
+  display: block;
+  margin: auto;
+  align-self: flex-start;
+}
+
+input {
+  border: none;
+  border-radius: 1em;
+  height: 3vh;
+  padding-left: 5px;
+}
+textarea {
+  border: none;
+  border-radius: 1em;
+  resize: none;
+  padding: 5px;
+}
+
+.all-form {
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 2em;
+  width: 60vw;
+  margin-left: 20vw;
+  background-color: rgb(202, 193, 167);
+  box-shadow: 6px 6px 6px rgb(141, 133, 111);
+  top: 10vh;
+}
+
+.form-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  z-index: 5;
+}
+h2 {
+  text-align: center;
+}
+
+button {
+  display: block;
+  margin: auto;
+  font-size: large;
+  background-color: rgb(162, 212, 212);
+  cursor: pointer;
+  border-radius: 30px;
+  margin-bottom: 2vh;
+  margin-top: 3vh;
+  width: 50%;
+  font-family: "New Tegomin", serif;
+  font-weight: 800;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+
+.all-labels-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: 20%;
+}
