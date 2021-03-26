@@ -19,6 +19,7 @@ Click the yellow plus button, and a form will pop up.
 Fill the form and click Submit to add your ticket or Exit if you regret.
 You can add labels to your ticket (optional), choose what you want😉
 ![plus-button](./readme-files/plusbtn.png)
+<br/>
 ![new-ticket](./readme-files/newticket.png)
 
 <br/>
