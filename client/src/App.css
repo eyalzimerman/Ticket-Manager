@@ -7,3 +7,40 @@
 html {
   scroll-behavior: smooth;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8.5%;
+  text-align: center;
+  background-color: wheat;
+  opacity: 0.3;
+}
+
+.footer:hover {
+  opacity: 1;
+}
+.footer-content-right {
+  padding-right: 1.5%;
+  margin-top: 1%;
+  float: left;
+}
+.icon-style {
+  height: 2.7em;
+  margin-left: 1em;
+  transition: 0.5s;
+}
+.icon-style:hover {
+  -ms-transform: scale(1.3);
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+.name {
+  float: left;
+  font-weight: 1000;
+  font-size: 130%;
+  font-family: "New Tegomin", serif;
+  margin-bottom: 2em;
+}

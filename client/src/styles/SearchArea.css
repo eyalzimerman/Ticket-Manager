@@ -74,7 +74,7 @@ select:focus {
 .scroll-btn {
   position: fixed;
   cursor: pointer;
-  bottom: 2%;
+  bottom: 10%;
   right: 3%;
   border: none;
   background-color: wheat;
@@ -119,8 +119,8 @@ select:focus {
 .add-ticket {
   position: fixed;
   cursor: pointer;
-  bottom: 2%;
-  right: 7%;
+  bottom: 10%;
+  right: 8%;
   border: none;
   background-color: wheat;
   padding: 1em;
