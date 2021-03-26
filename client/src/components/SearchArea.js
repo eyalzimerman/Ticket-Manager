@@ -30,6 +30,8 @@ export default function SearchArea() {
   const [classNameSpinner, setClassNameSpinner] = useState("spinner-div");
   const [blurWhenLoading, setBlurWhenLoading] = useState("main");
   const [hideForm, setHideForm] = useState(true);
+  const [formMessage, setFormMessage] = useState("");
+  const [classFormMessage, setClassFormMessage] = useState("");
 
   useEffect(() => {
     setClassNameSpinner("loader");
@@ -48,13 +50,12 @@ export default function SearchArea() {
       .catch((e) => {
         setClassNameSpinner("spinner-div");
         setBlurWhenLoading("main");
-        console.log(e.message);
       });
   }, []);
 
   // Function to get tickets by search
-  const getTicketBySearchText = async (e) => {
-    const inputValue = e.target.value;
+  const getTicketBySearchText = async (target) => {
+    const inputValue = target.value;
     setTempText(inputValue);
     try {
       setClassNameSpinner("loader");
@@ -78,7 +79,6 @@ export default function SearchArea() {
     } catch (e) {
       setClassNameSpinner("spinner-div");
       setBlurWhenLoading("main");
-      console.log(e.message);
     }
   };
 
@@ -130,9 +130,32 @@ export default function SearchArea() {
         data[key] = value;
       }
     }
-    axios.post("/api/tickets/new", data).catch((e) => {
-      console.log(e.message);
-    });
+    setClassNameSpinner("loader");
+    setBlurWhenLoading("blur");
+    axios
+      .post("/api/tickets/new", data)
+      .then((res) => {
+        setFormMessage("Saved Ticket!");
+        setClassFormMessage("message");
+        setClassNameSpinner("spinner-div");
+        setBlurWhenLoading("main");
+        const searchInput = document.querySelector("#searchInput");
+        getTicketBySearchText(searchInput);
+        setTimeout(() => {
+          setFormMessage("");
+          setClassFormMessage("");
+        }, 4000);
+      })
+      .catch((e) => {
+        setClassFormMessage("message");
+        setFormMessage("Failed To Saved Ticket!");
+        setClassNameSpinner("spinner-div");
+        setBlurWhenLoading("main");
+        setTimeout(() => {
+          setFormMessage("");
+          setClassFormMessage("");
+        }, 4000);
+      });
     setHideForm(!hideForm);
     form.reset();
   };
@@ -140,18 +163,21 @@ export default function SearchArea() {
   return (
     <div className="search-area">
       <h1>Ticket Manager</h1>
+      <div className={classFormMessage}>{formMessage}</div>
       <div className="scroll-btn" onClick={scrollUp}>
         <i className="fas fa-chevron-up"></i>
       </div>
       <div className="add-ticket" onClick={() => setHideForm(!hideForm)}>
-        <i class="fas fa-plus"></i>
+        <i className="fas fa-plus"></i>
       </div>
       <input
         id="searchInput"
         className="input"
         type="text"
         placeholder="Search for ticket..."
-        onChange={getTicketBySearchText}
+        onChange={(e) => {
+          getTicketBySearchText(e.target);
+        }}
       />
       <div className="restore-div">
         <div id="hideTicketsCounter">{hiddenTicketCounter} </div>

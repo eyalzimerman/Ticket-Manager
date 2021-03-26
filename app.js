@@ -26,7 +26,6 @@ app.get("/api/tickets/", async (req, res) => {
 
     res.status(200).json(data);
   } catch (e) {
-    console.log(e);
     res.status(500).json({ message: "Server Problem" });
   }
 });
@@ -78,7 +77,7 @@ app.post("/api/tickets/new/", async (req, res) => {
       labels,
     });
     await ticket.save();
-    return res.status(200).json({ message: "Ticket Saved!" });
+    return res.status(204).send();
   } catch (e) {
     return res.status(500).json({ message: e.message });
   }

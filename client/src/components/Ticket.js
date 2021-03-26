@@ -43,7 +43,6 @@ export default function Ticket({
         setConditionClass("condition");
         setIsDone(<i className="fas fa-times"></i>);
       } catch (e) {
-        console.log(e.message);
         setCondition("Failed!");
         setConditionClass("condition");
         setIsDone(<i className="fas fa-check"></i>);
@@ -59,7 +58,6 @@ export default function Ticket({
         setConditionClass("condition");
         setIsDone(<i className="fas fa-check"></i>);
       } catch (e) {
-        console.log(e.message);
         setCondition("Failed!");
         setConditionClass("condition");
         setIsDone(<i className="fas fa-times"></i>);

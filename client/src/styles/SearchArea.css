@@ -61,9 +61,13 @@ select:focus {
   margin: 3px 3px;
   width: fit-content;
   box-shadow: 2px 2px 2px wheat;
+  transition: 0.8s;
 }
 
 .label-search-area:hover {
+  -ms-transform: scale(1.4);
+  -webkit-transform: scale(1.4);
+  transform: scale(1.4);
   background-color: rgb(214, 243, 242);
 }
 
@@ -128,6 +132,24 @@ select:focus {
 
 .add-ticket:hover {
   opacity: 1;
+}
+
+.message-ticket {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.message {
+  font-size: x-large;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  -webkit-transition: opacity 5s ease-in-out;
+  -moz-transition: opacity 35s ease-in-out;
+  -ms-transition: opacity 5s ease-in-out;
+  -o-transition: opacity 5s ease-in-out;
+  opacity: 0;
 }
 
 /*-------styled spinner-------*/
