@@ -7,11 +7,34 @@
 ## Filter by label
 
 To filter tickets by label click the label you'd like to see.
-![labels]("./readme-files/labels.png")
+![labels](./readme-files/labels.png)
 
-## Grading policy
+<br/>
+<br/>
+<br/>
 
-- Your project will be graded by the number of automatic tests you pass
-- Visual creativity, use css to make this app look awesome 💅🏿
-- Code quality: Variable naming, meaningful comments, logic separation into functions
-- Git usage: commit messages, and overall git usage flow
+## Add new ticket
+
+Click the yellow plus button, and a form will pop up.
+Fill the form and click Submit to add your ticket or Exit if you regret.
+You can add labels to your ticket (optional), choose what you want😉
+![plus-button](./readme-files/plusbtn.png)
+![new-ticket](./readme-files/newticket.png)
+
+<br/>
+<br/>
+<br/>
+
+## More features i added
+
+- Back to top button 👆🏻
+
+![up-button](./readme-files/upbtn.png)
+
+- Done and Undone button for each ticket
+
+![done-button](./readme-files/v.png) ![undone-button](./readme-files/x.png)
+
+- Footer for being able to contact me 📱😃
+
+![footer](./readme-files/footer.png)
